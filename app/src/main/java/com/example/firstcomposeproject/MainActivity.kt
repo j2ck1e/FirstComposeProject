@@ -16,31 +16,19 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            FirstComposeProjectTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+            UserInfo(name = "j2ck1e", age = 37)
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting() {
+    val name = "Android"
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Hello $name!"
     )
 }
-
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    FirstComposeProjectTheme {
-        Greeting("Android")
-    }
+fun UserInfo(name: String, age: Int){
+    Text("Hello $name, you are $age years old")
 }
