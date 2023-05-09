@@ -14,18 +14,22 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.ModifierLocalReadScope
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 
 @Composable
 fun InstagramProfileCard() {
-    Card(modifier = Modifier.padding(8.dp),
+    Card(
+        modifier = Modifier.padding(8.dp),
         colors = CardDefaults.cardColors(MaterialTheme.colorScheme.background),
         shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp),
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground)
@@ -42,37 +46,40 @@ fun InstagramProfileCard() {
                     .size(50.dp)
                     .background(Color.Yellow)
             )
-            TwoBoxes()
-            TwoBoxes()
-            TwoBoxes()
+            UserStatistic(title = "Posts", value = "6,950")
+            UserStatistic(title = "Followers", value = "436M")
+            UserStatistic(title = "Following", value = "76")
         }
     }
 }
 
 @Composable
-private fun TwoBoxes() {
+private fun UserStatistic(
+    title: String,
+    value: String,
+) {
     Column(
         modifier = Modifier
             .height(80.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        Box(
-            modifier = Modifier
-                .size(25.dp)
-                .background(Color.Blue)
+        Text(
+            text = value,
+            fontFamily = FontFamily.Cursive,
+            fontSize = 24.sp
+
         )
-        Box(
-            modifier = Modifier
-                .size(25.dp)
-                .background(Color.Red)
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold
         )
     }
 }
 
 @Preview
 @Composable
-fun PreviewThemeLight(){
+fun PreviewThemeLight() {
     FirstComposeProjectTheme(darkTheme = false) {
         InstagramProfileCard()
     }
@@ -80,7 +87,7 @@ fun PreviewThemeLight(){
 
 @Preview
 @Composable
-fun PreviewThemeDark(){
+fun PreviewThemeDark() {
     FirstComposeProjectTheme(darkTheme = true) {
         InstagramProfileCard()
     }
