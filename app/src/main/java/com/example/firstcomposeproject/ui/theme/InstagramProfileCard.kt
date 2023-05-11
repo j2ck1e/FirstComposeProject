@@ -34,23 +34,27 @@ import com.example.firstcomposeproject.R
 @Composable
 fun InstagramProfileCard() {
     Card(
-        modifier = Modifier.padding(8.dp),
-        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.background),
-        shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground)
+            modifier = Modifier.padding(8.dp),
+            colors = CardDefaults.cardColors(MaterialTheme.colorScheme.background),
+            shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground)
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                modifier = Modifier
-                    .size(50.dp),
-                painter = painterResource(id = R.drawable.ic_instagram),
-                contentDescription = ""
+                    modifier = Modifier
+                            .size(60.dp)
+                            .clip(CircleShape)
+                            .background(Color.White)
+                            .padding(2.dp)
+                            ,
+                    painter = painterResource(id = R.drawable.ic_instagram),
+                    contentDescription = ""
             )
             UserStatistic(title = "Posts", value = "6,950")
             UserStatistic(title = "Followers", value = "436M")
@@ -61,24 +65,24 @@ fun InstagramProfileCard() {
 
 @Composable
 private fun UserStatistic(
-    title: String,
-    value: String,
+        title: String,
+        value: String,
 ) {
     Column(
-        modifier = Modifier
-            .height(80.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
+            modifier = Modifier
+                    .height(80.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceEvenly
     ) {
         Text(
-            text = value,
-            fontFamily = FontFamily.Cursive,
-            fontSize = 24.sp
+                text = value,
+                fontFamily = FontFamily.Cursive,
+                fontSize = 24.sp
 
         )
         Text(
-            text = title,
-            fontWeight = FontWeight.Bold
+                text = title,
+                fontWeight = FontWeight.Bold
         )
     }
 }
