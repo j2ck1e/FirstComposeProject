@@ -6,9 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -19,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -42,9 +45,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             FirstComposeProjectTheme {
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(MaterialTheme.colorScheme.background)
+                        modifier = Modifier
+                                .fillMaxSize()
+                                .background(MaterialTheme.colorScheme.background)
                 ) {
                     InstagramProfileCard()
                 }
@@ -56,13 +59,29 @@ class MainActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun TestImage(){
-    Image(modifier = Modifier
+fun TestImage() {
+    Box(
+            modifier = Modifier
+                    .size(200.dp)
+                    .background(Color.Cyan)
+    ) {
+        Image(painter = ColorPainter(Color.Yellow),
+                modifier = Modifier
 //        .fillMaxSize(),
-        .clip(CircleShape),
-        painter = painterResource(R.drawable.ic_instagram),
-        contentDescription = "",
-    contentScale = ContentScale.FillWidth)
+
+                .background(Color.Green)
+                .padding(25.dp)
+                .size(100.dp)
+                        .clip(CircleShape)
+                .background(Color.Red)
+                .padding(25.dp)
+                ,
+
+
+                contentDescription = "",
+                contentScale = ContentScale.FillWidth)
+    }
 }
+
 
 
